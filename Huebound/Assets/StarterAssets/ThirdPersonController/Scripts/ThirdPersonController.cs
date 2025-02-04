@@ -97,6 +97,7 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDShooting;
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -159,6 +160,8 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            Fire();
+            Debug.Log(_animator.GetBool(_animIDShooting));
         }
 
         private void LateUpdate()
@@ -173,6 +176,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDShooting = Animator.StringToHash("Shooting");
         }
 
         private void GroundedCheck()
@@ -348,6 +352,19 @@ namespace StarterAssets
             }
         }
 
+        private void Fire()
+        {
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDShooting, false);
+                if (_input.fire)
+                {
+                    _animator.SetBool(_animIDShooting, true);
+                }
+            }
+            _input.fire = false;
+        }
+
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
@@ -388,5 +405,13 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+
+        //private void OnFire(AnimationEvent animationEvent)
+        //{
+        //    if (animationEvent.animatorClipInfo.weight > 0.5f)
+        //    {
+
+        //    }
+        //}
     }
 }
