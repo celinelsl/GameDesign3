@@ -414,7 +414,6 @@ namespace StarterAssets
                 Instantiate(vfxHitGreen, mouseWorldPosition, Quaternion.identity);
                 transform.position = hit.point;
             }
-            //Vector3 directionWithoutSpread = targetPoint - gunPoint.position;
             Vector3 aimDir = (mouseWorldPosition - gunPoint.position).normalized;
             Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(aimDir, Vector3.up));
 
