@@ -8,54 +8,54 @@ namespace StarterAssets
 	public class StarterAssetsInputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]
-		public Vector2 move;
-		public Vector2 look;
-		public bool jump;
-		public bool sprint;
-		public bool fire;
+        private Vector2 move;
+        private Vector2 look;
+        private bool jump;
+        private bool sprint;
+        private bool fire;
 
 		[Header("Movement Settings")]
-		public bool analogMovement;
+		private bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
-		public bool cursorInputForLook = true;
+        public bool cursorInputForLook = true;
+
 
 #if ENABLE_INPUT_SYSTEM
-		public void OnMove(InputValue value)
-		{
-			MoveInput(value.Get<Vector2>());
-		}
+        public void OnMove(InputAction.CallbackContext value)
+        {
+            MoveInput(value.ReadValue<Vector2>());
+        }
 
-		public void OnLook(InputValue value)
-		{
-			if(cursorInputForLook)
-			{
-				LookInput(value.Get<Vector2>());
-			}
-		}
+        public void OnLook(InputAction.CallbackContext value)
+        {
+            if (cursorInputForLook)
+            {
+                LookInput(value.ReadValue<Vector2>());
+            }
+        }
 
-		public void OnJump(InputValue value)
-		{
-			JumpInput(value.isPressed);
-		}
+        public void OnJump(InputAction.CallbackContext value)
+        {
+            JumpInput(value.action.triggered);
+        }
 
-		public void OnSprint(InputValue value)
-		{
-			SprintInput(value.isPressed);
-		}
+        public void OnSprint(InputAction.CallbackContext value)
+        {
+            SprintInput(value.action.ReadValue<float>() == 1);
+        }
 
-		public void OnFire(InputValue value)
-		{
-			FireInput(value.isPressed);
-		}
+        //public void OnFire(InputAction.CallbackContext value)
+        //{
+        //    FireInput(value.action.triggered);
+        //}
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-            Debug.Log("Walking: " + move);
         } 
 
 		public void LookInput(Vector2 newLookDirection)
@@ -73,12 +73,43 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
-		public void FireInput(bool newFireState)
+        //public void FireInput(bool newFireState)
+        //{
+        //    fire = newFireState;
+        //}
+
+        public Vector2 GetMove()
 		{
-			fire = newFireState;
+			return move;
+		}
+
+        public Vector2 GetLook()
+        {
+            return look;
         }
-		
-		private void OnApplicationFocus(bool hasFocus)
+
+        public bool IsJumping()
+        {
+            return jump;
+        }
+
+        public bool IsSprinting()
+        {
+            return sprint;
+        }
+
+        public bool IsAnalog()
+        {
+            return analogMovement;
+        }
+
+
+        //public bool IsFiring()
+        //{
+        //    return fire;
+        //}
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}

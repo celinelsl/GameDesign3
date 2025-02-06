@@ -105,11 +105,27 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
-        private GameObject _mainCamera;
+        //private InputController _input;
+        private Camera _mainCamera;
+
+        //private InputAction moveAction;
+        //private InputAction jumpAction;
+        private InputAction shootAction;
 
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+
+        public GameObject bulletPrefab;
+        public Transform gunPoint;
+        private Vector3 mouseWorldPosition;
+
+        [SerializeField] private Transform vfxHitGreen;
+        [SerializeField] private Transform vfxHitRed;
+
+
+        [SerializeField]
+        private LayerMask aimColliderLayerMask = new LayerMask();
 
         private bool IsCurrentDeviceMouse
         {
@@ -126,25 +142,39 @@ namespace StarterAssets
 
         private void Awake()
         {
-            // get a reference to our main camera
-            if (_mainCamera == null)
-            {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            }
+            _mainCamera = Camera.main;
+            _controller = GetComponent<CharacterController>();
+            _input = GetComponent<StarterAssetsInputs>();
+            //_input = new StarterAssetsInputs();
+#if ENABLE_INPUT_SYSTEM 
+            _playerInput = GetComponent<PlayerInput>();
+            shootAction = _playerInput.actions["Fire"];
+
+#else
+			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+#endif
+        }
+        private void OnEnable()
+        {
+            shootAction.Enable();
+            shootAction.performed += _ => Fire();
+            shootAction.canceled += OnShootCanceled;
+        }
+
+        private void OnDisable()
+        {
+            shootAction.Disable();
+            shootAction.performed -= _ => Fire();
+            shootAction.canceled -= OnShootCanceled;
+
         }
 
         private void Start()
         {
+            _mainCamera = Camera.main;
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _hasAnimator = TryGetComponent(out _animator);
-            _controller = GetComponent<CharacterController>();
-            _input = GetComponent<StarterAssetsInputs>();
-#if ENABLE_INPUT_SYSTEM 
-            _playerInput = GetComponent<PlayerInput>();
-#else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-#endif
 
             AssignAnimationIDs();
 
@@ -160,8 +190,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            Fire();
-            Debug.Log(_animator.GetBool(_animIDShooting));
+            //Fire();
         }
 
         private void LateUpdate()
@@ -196,14 +225,15 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
+            Vector2 look = _input.GetLook();
             // if there is an input and camera position is not fixed
-            if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+            if (look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+                _cinemachineTargetYaw += look.x * deltaTimeMultiplier;
+                _cinemachineTargetPitch += look.y * deltaTimeMultiplier;
             }
 
             // clamp our rotations so our values are limited 360 degrees
@@ -218,19 +248,19 @@ namespace StarterAssets
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _input.IsSprinting() ? SprintSpeed : MoveSpeed;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.GetMove() == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
-            float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+            float inputMagnitude = _input.IsAnalog() ? _input.GetMove().magnitude : 1f;
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
@@ -253,11 +283,11 @@ namespace StarterAssets
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
             // normalise input direction
-            Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            Vector3 inputDirection = new Vector3(_input.GetMove().x, 0.0f, _input.GetMove().y).normalized;
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
+            if (_input.GetMove() != Vector2.zero)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                   _mainCamera.transform.eulerAngles.y;
@@ -304,7 +334,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.IsJumping() && _jumpTimeoutDelta <= 0.0f)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -340,9 +370,6 @@ namespace StarterAssets
                         _animator.SetBool(_animIDFreeFall, true);
                     }
                 }
-
-                // if we are not grounded, do not jump
-                _input.jump = false;
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -354,15 +381,46 @@ namespace StarterAssets
 
         private void Fire()
         {
+            //mouseWorldPosition = Vector3.zero;
+
+            //Vector3 worldAimTarget = mouseWorldPosition;
+
+            //worldAimTarget.y = transform.position.y;
+
+            //Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+
+            //transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDShooting, false);
-                if (_input.fire)
-                {
-                    _animator.SetBool(_animIDShooting, true);
-                }
+
+                _animator.SetBool(_animIDShooting, true);
+
+                ShootFromCenter();
             }
-            _input.fire = false;
+        }
+
+        private void ShootFromCenter()
+        {
+
+            Vector2 screenCentre = new Vector2(Screen.width / 2, Screen.height / 2);
+            Ray ray = _mainCamera.ScreenPointToRay(screenCentre);
+
+            //Vector3 targetPoint;
+
+            // Cast the ray from the camera's center and check if it hits something
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimColliderLayerMask))
+            {
+                Instantiate(vfxHitGreen, mouseWorldPosition, Quaternion.identity);
+                transform.position = hit.point;
+            }
+            //Vector3 directionWithoutSpread = targetPoint - gunPoint.position;
+            Vector3 aimDir = (mouseWorldPosition - gunPoint.position).normalized;
+            Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(aimDir, Vector3.up));
+
+            //GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.identity);
+            //bullet.transform.forward = directionWithoutSpread.normalized;
+            //bullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * 10, ForceMode.Impulse);
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -406,12 +464,10 @@ namespace StarterAssets
             }
         }
 
-        //private void OnFire(AnimationEvent animationEvent)
-        //{
-        //    if (animationEvent.animatorClipInfo.weight > 0.5f)
-        //    {
-
-        //    }
-        //}
+        private void OnShootCanceled(InputAction.CallbackContext context)
+        {
+            // Set the shooting animation to false when shooting is canceled
+            _animator.SetBool(_animIDShooting, false);
+        }
     }
 }
