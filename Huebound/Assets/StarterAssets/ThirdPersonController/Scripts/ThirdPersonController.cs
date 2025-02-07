@@ -121,16 +121,8 @@ namespace StarterAssets
         public Transform gunPoint;
 
         private bool isShooting;
-        [SerializeField] private float fireRate = 1f; // Adjust fire rate as needed
+        [SerializeField] private float fireRate = 0.05f; // Adjust fire rate as needed
         private Coroutine shootingCoroutine;
-
-
-        [SerializeField] private Transform vfxHitGreen;
-        [SerializeField] private Transform vfxHitRed;
-
-
-        [SerializeField]
-        private LayerMask aimColliderLayerMask = new LayerMask();
 
         private bool IsCurrentDeviceMouse
         {
