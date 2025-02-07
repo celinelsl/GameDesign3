@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -118,7 +119,11 @@ namespace StarterAssets
 
         public GameObject bulletPrefab;
         public Transform gunPoint;
-        private Vector3 mouseWorldPosition;
+
+        private bool isShooting;
+        [SerializeField] private float fireRate = 1f; // Adjust fire rate as needed
+        private Coroutine shootingCoroutine;
+
 
         [SerializeField] private Transform vfxHitGreen;
         [SerializeField] private Transform vfxHitRed;
@@ -157,15 +162,15 @@ namespace StarterAssets
         private void OnEnable()
         {
             shootAction.Enable();
-            shootAction.performed += _ => Fire();
-            shootAction.canceled += OnShootCanceled;
+            shootAction.performed += _ => StartShooting();
+            shootAction.canceled += _ => StopShooting();
         }
 
         private void OnDisable()
         {
             shootAction.Disable();
-            shootAction.performed -= _ => Fire();
-            shootAction.canceled -= OnShootCanceled;
+            shootAction.performed -= _ => StartShooting();
+            shootAction.canceled -= _ => StopShooting();
 
         }
 
@@ -190,7 +195,6 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            //Fire();
         }
 
         private void LateUpdate()
@@ -311,6 +315,26 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+
+            Vector2 screenCentre = new Vector2(Screen.width / 2, Screen.height / 2);
+            Ray ray = _mainCamera.ScreenPointToRay(screenCentre);
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Vector3 aimDirection = (hit.point - transform.position).normalized;
+                aimDirection.y = 0; // Keep rotation only in the horizontal plane
+                Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            }
+            else
+            {
+                hit.point = ray.GetPoint(70);
+                Vector3 aimDirection = (hit.point - transform.position).normalized;
+                aimDirection.y = 0; // Keep rotation only in the horizontal plane
+                Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+            }
         }
 
         private void JumpAndGravity()
@@ -379,21 +403,39 @@ namespace StarterAssets
             }
         }
 
+        private void StartShooting()
+        {
+            if (!isShooting)
+            {
+                isShooting = true;
+                shootingCoroutine = StartCoroutine(ShootContinuously());
+            }
+        }
+
+        private void StopShooting()
+        {
+            isShooting = false;
+            if (shootingCoroutine != null)
+            {
+                StopCoroutine(shootingCoroutine);
+                _animator.SetBool(_animIDShooting, false);
+            }
+        }
+
+        private IEnumerator ShootContinuously()
+        {
+            while (isShooting)
+            {
+                Fire();
+                yield return new WaitForSeconds(fireRate);
+            }
+        }
         private void Fire()
         {
-            //mouseWorldPosition = Vector3.zero;
-
-            //Vector3 worldAimTarget = mouseWorldPosition;
-
-            //worldAimTarget.y = transform.position.y;
-
-            //Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-
-            //transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
-
             if (_hasAnimator)
             {
-
+                // Rotate player to face camera forward
+                //transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
                 _animator.SetBool(_animIDShooting, true);
 
                 ShootFromCenter();
@@ -406,20 +448,23 @@ namespace StarterAssets
             Vector2 screenCentre = new Vector2(Screen.width / 2, Screen.height / 2);
             Ray ray = _mainCamera.ScreenPointToRay(screenCentre);
 
-            //Vector3 targetPoint;
-
             // Cast the ray from the camera's center and check if it hits something
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimColliderLayerMask))
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Instantiate(vfxHitGreen, mouseWorldPosition, Quaternion.identity);
-                transform.position = hit.point;
+                GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.identity);
+                Vector3 direction = (hit.point - gunPoint.position).normalized;
+                bullet.transform.forward = direction;
+                bullet.GetComponent<Rigidbody>().velocity = direction * 100;
             }
-            Vector3 aimDir = (mouseWorldPosition - gunPoint.position).normalized;
-            Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            else
+            {
+                hit.point = ray.GetPoint(70);
+                GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.identity);
+                Vector3 direction = (hit.point - gunPoint.position).normalized;
+                bullet.transform.forward = direction;
+                bullet.GetComponent<Rigidbody>().velocity = direction * 100;
+            }
 
-            //GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.identity);
-            //bullet.transform.forward = directionWithoutSpread.normalized;
-            //bullet.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * 10, ForceMode.Impulse);
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -461,12 +506,6 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
-        }
-
-        private void OnShootCanceled(InputAction.CallbackContext context)
-        {
-            // Set the shooting animation to false when shooting is canceled
-            _animator.SetBool(_animIDShooting, false);
         }
     }
 }
