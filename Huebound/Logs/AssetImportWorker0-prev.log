@@ -22,7 +22,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53702
+56973
 Successfully changed project path to: /Users/Celine/Documents/GitHub/GameDesign3/Huebound
 /Users/Celine/Documents/GitHub/GameDesign3/Huebound
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -56,12 +56,12 @@ Successfully changed project path to: /Users/Celine/Documents/GitHub/GameDesign3
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [8537328640] Host "[IP] 10.132.132.103 [Port] 0 [Flags] 2 [Guid] 3130344363 [EditorId] 3130344363 [Version] 1048832 [Id] OSXEditor(0,celine.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [8537328640] Host "[IP] 10.132.132.103 [Port] 0 [Flags] 2 [Guid] 2859091639 [EditorId] 2859091639 [Version] 1048832 [Id] OSXEditor(0,celine.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [8537328640] Host "[IP] 10.132.132.103 [Port] 0 [Flags] 2 [Guid] 3130344363 [EditorId] 3130344363 [Version] 1048832 [Id] OSXEditor(0,celine.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8537328640] Host "[IP] 10.132.132.103 [Port] 0 [Flags] 2 [Guid] 2859091639 [EditorId] 2859091639 [Version] 1048832 [Id] OSXEditor(0,celine.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 7 workers.
-Refreshing native plugins compatible for Editor in 12.91 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 10.83 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.27f1 (73effa14754f)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -76,44 +76,44 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56373
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56302
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.001753 seconds.
-- Loaded All Assemblies, in  0.208 seconds
+Registered in 0.000885 seconds.
+- Loaded All Assemblies, in  0.202 seconds
 Native extension for OSXStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.143 seconds
-Domain Reload Profiling: 350ms
-	BeginReloadAssembly (68ms)
+- Finished resetting the current domain, in  0.123 seconds
+Domain Reload Profiling: 325ms
+	BeginReloadAssembly (77ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (0ms)
-	RebuildCommonClasses (20ms)
+	RebuildCommonClasses (18ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (28ms)
-	LoadAllAssembliesAndSetupDomain (84ms)
-		LoadAssemblies (68ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (77ms)
+		LoadAssemblies (79ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (83ms)
-			TypeCache.Refresh (82ms)
-				TypeCache.ScanAssembly (74ms)
+		AnalyzeDomain (73ms)
+			TypeCache.Refresh (73ms)
+				TypeCache.ScanAssembly (65ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (143ms)
+	FinalizeReload (124ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (110ms)
+		SetupLoadedEditorAssemblies (95ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			SetLoadedEditorAssemblies (4ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (1ms)
-			ProcessInitializeOnLoadAttributes (76ms)
-			ProcessInitializeOnLoadMethodAttributes (23ms)
+			ProcessInitializeOnLoadAttributes (66ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -121,52 +121,52 @@ Domain Reload Profiling: 350ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.385 seconds
+- Loaded All Assemblies, in  0.372 seconds
 Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
 Native extension for OSXStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.480 seconds
-Domain Reload Profiling: 865ms
-	BeginReloadAssembly (63ms)
+- Finished resetting the current domain, in  0.430 seconds
+Domain Reload Profiling: 802ms
+	BeginReloadAssembly (61ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
+		DisableScriptedObjects (2ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (16ms)
-	RebuildCommonClasses (20ms)
+		CreateAndSetChildDomain (13ms)
+	RebuildCommonClasses (18ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (20ms)
-	LoadAllAssembliesAndSetupDomain (274ms)
-		LoadAssemblies (174ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (268ms)
+		LoadAssemblies (179ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (126ms)
-			TypeCache.Refresh (108ms)
-				TypeCache.ScanAssembly (95ms)
-			ScanForSourceGeneratedMonoScriptInfo (11ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (480ms)
+		AnalyzeDomain (117ms)
+			TypeCache.Refresh (101ms)
+				TypeCache.ScanAssembly (89ms)
+			ScanForSourceGeneratedMonoScriptInfo (9ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (430ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (386ms)
+		SetupLoadedEditorAssemblies (347ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (2ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (35ms)
-			ProcessInitializeOnLoadAttributes (318ms)
-			ProcessInitializeOnLoadMethodAttributes (28ms)
-			AfterProcessingInitializeOnLoad (1ms)
+			BeforeProcessingInitializeOnLoad (32ms)
+			ProcessInitializeOnLoadAttributes (288ms)
+			ProcessInitializeOnLoadMethodAttributes (24ms)
+			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (2ms)
 Launching external process: /Applications/Unity/Hub/Editor/2022.3.27f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.73 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Refreshing native plugins compatible for Editor in 0.76 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5502 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 88 unused Assets / (442.9 KB). Loaded Objects now: 5959.
-Memory consumption went from 227.2 MB to 226.8 MB.
-Total: 3.397625 ms (FindLiveObjects: 0.190791 ms CreateObjectMapping: 0.051084 ms MarkObjects: 2.912375 ms  DeleteObjects: 0.242750 ms)
+Unloading 5503 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 88 unused Assets / (443.7 KB). Loaded Objects now: 5960.
+Memory consumption went from 227.3 MB to 226.9 MB.
+Total: 2.969791 ms (FindLiveObjects: 0.181208 ms CreateObjectMapping: 0.050375 ms MarkObjects: 2.529500 ms  DeleteObjects: 0.208292 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -183,65 +183,217 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 383026.153946 seconds.
-  path: Assets/StarterAssets/Environment/Art/Models/Wall_Mesh.fbx
-  artifactKey: Guid(ff02a0a00ab750f48b09459b1cafd1b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/Environment/Art/Models/Wall_Mesh.fbx using Guid(ff02a0a00ab750f48b09459b1cafd1b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '262782e9597b63281f940f93cafaf86e') in 0.201874 seconds
+  Time since last request: 391578.838428 seconds.
+  path: Assets/Paint.shader
+  artifactKey: Guid(c0e3256c2983640d9a98663d57a19828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Paint.shader using Guid(c0e3256c2983640d9a98663d57a19828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6f31a97af4861b232a444c09e997b72') in 0.006032 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/StarterAssets/Environment/Art/Models/Structure_Mesh.fbx
-  artifactKey: Guid(d0a9bfb4b5f28174884e89dd76563ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/Environment/Art/Models/Structure_Mesh.fbx using Guid(d0a9bfb4b5f28174884e89dd76563ae8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50de5db43fc5767e5b3c2f16182a347d') in 0.012239 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
+  Time since last request: 721.926061 seconds.
+  path: Assets/PaintSplatShader.shadergraph
+  artifactKey: Guid(8459b86b556d64dd5ae3a2705bb4d229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PaintSplatShader.shadergraph using Guid(8459b86b556d64dd5ae3a2705bb4d229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcf9ca4445e808aa3a9dc65ad5afcb8d') in 0.601174 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 5.479160 seconds.
-  path: Assets/StarterAssets/Environment/Art/Materials/GreyBlue_Mat.mat
-  artifactKey: Guid(6b911390c5825014e8377183a7837d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/Environment/Art/Materials/GreyBlue_Mat.mat using Guid(6b911390c5825014e8377183a7837d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e55c6542587930ba0b05fbe319359b71') in 0.010105 seconds
+  Time since last request: 358.889474 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_01.png
+  artifactKey: Guid(56f433345b1faa64eb50cdb197d34f71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_01.png using Guid(56f433345b1faa64eb50cdb197d34f71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cef08439b236eab55e4a9a56c23848b0') in 0.099188 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000173 seconds.
-  path: Assets/StarterAssets/Environment/Art/Materials/GridWhite_01_Mat.mat
-  artifactKey: Guid(dbf898c9f9c4a2d46aa6336e23caeb61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/Environment/Art/Materials/GridWhite_01_Mat.mat using Guid(dbf898c9f9c4a2d46aa6336e23caeb61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '173fb09fccb08367b4ce3fd1486f95f0') in 0.009906 seconds
+  Time since last request: 0.000080 seconds.
+  path: Assets/StarterAssets/Environment/Art/Textures/Grid_02_BaseMap.png
+  artifactKey: Guid(d9c0dd5cdac07b145be73329e489869a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StarterAssets/Environment/Art/Textures/Grid_02_BaseMap.png using Guid(d9c0dd5cdac07b145be73329e489869a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '607a8d73e707124899f652997d566ded') in 0.011466 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 5
+Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/StarterAssets/Environment/Art/Materials/GridOrange_01_Mat.mat
-  artifactKey: Guid(7ab977a21c92388468ee65ad1c0e5a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/Environment/Art/Materials/GridOrange_01_Mat.mat using Guid(7ab977a21c92388468ee65ad1c0e5a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '576c8a4ca8d61f7e7d3c9b743d322371') in 0.008231 seconds
+  Time since last request: 0.000143 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_06.png
+  artifactKey: Guid(b889ef0124f73fa4298de5e962dac98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_06.png using Guid(b889ef0124f73fa4298de5e962dac98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab5f799ab8551a17f756b159f2ba991c') in 0.006503 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 5
+Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000093 seconds.
-  path: Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Body.mat
-  artifactKey: Guid(43714b68324cc2c409d534d9874f2a2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Body.mat using Guid(43714b68324cc2c409d534d9874f2a2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ee86737d65c54d28d7e973e6a2a4326') in 0.018660 seconds
+  Time since last request: 0.000088 seconds.
+  path: Assets/StarterAssets/Environment/Art/Textures/Grid_01_Emissive.png
+  artifactKey: Guid(d4d6919451fe3e24388816386a6d15a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StarterAssets/Environment/Art/Textures/Grid_01_Emissive.png using Guid(d4d6919451fe3e24388816386a6d15a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c4e591edf83f491f224edb5ff554d00') in 0.005792 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 5
+Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Models/Paint/PaintMaterial.mat
-  artifactKey: Guid(3b2fcaaeb3e462846ac49bce885636c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Paint/PaintMaterial.mat using Guid(3b2fcaaeb3e462846ac49bce885636c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '832402c392436c174883f51a30688c2f') in 0.045092 seconds
+  Time since last request: 0.000143 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_11.png
+  artifactKey: Guid(dc7eb94056b536a4a9f810db7b171332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_11.png using Guid(dc7eb94056b536a4a9f810db7b171332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0aa3553cebafde9d92f3de45fe7c00cc') in 0.006024 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_07.png
+  artifactKey: Guid(c9eecbebc2f28f94488fbbf662912f1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_07.png using Guid(c9eecbebc2f28f94488fbbf662912f1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37350cb6760f7a837a4a6db2ff3a1d08') in 0.004523 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000105 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_03.png
+  artifactKey: Guid(8c89ed5746a4faa48bb97701cc2f2e35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_03.png using Guid(8c89ed5746a4faa48bb97701cc2f2e35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abc1fb104812174001d48bb47a9d0fc0') in 0.004720 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_14.png
+  artifactKey: Guid(1d1b964de9e4c50418b4d14cdf24d9ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_14.png using Guid(1d1b964de9e4c50418b4d14cdf24d9ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e856e215dd755f91f402ba39d9e22e45') in 0.004469 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000081 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_16.png
+  artifactKey: Guid(743aae4b5553cb24eb7caf0bce1a4128) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_16.png using Guid(743aae4b5553cb24eb7caf0bce1a4128) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c1a03b6892bf95c2baaa92238a6b591') in 0.004716 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_04.png
+  artifactKey: Guid(b8e78032f8af0954784d1fe9e5a09187) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_04.png using Guid(b8e78032f8af0954784d1fe9e5a09187) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b1de321af87243d42ad3860ed996aaf') in 0.005188 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Editor/Textures/logo.png
+  artifactKey: Guid(071975048195e45478df8f4a898773cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Editor/Textures/logo.png using Guid(071975048195e45478df8f4a898773cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd6e9301be427cf702ed56f75b60640b') in 0.005110 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/StarterAssets/Environment/Art/Textures/Grid_01_BaseMap.png
+  artifactKey: Guid(d1118dda59970a2449ee890fa247c4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StarterAssets/Environment/Art/Textures/Grid_01_BaseMap.png using Guid(d1118dda59970a2449ee890fa247c4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ab28f037755108b8f30763285ad60d0') in 0.003947 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000074 seconds.
+  path: Assets/Models/Textures/Female_texture.png
+  artifactKey: Guid(493eb01ddb5214e4c90e0ca0587a66b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Textures/Female_texture.png using Guid(493eb01ddb5214e4c90e0ca0587a66b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2937b26752700215a05f59d113746599') in 0.004695 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_05.png
+  artifactKey: Guid(26ce86e7f4d6e82438811bd217defb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_05.png using Guid(26ce86e7f4d6e82438811bd217defb85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '316323087b2178d72f3cd97da711cbc7') in 0.006232 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000140 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_18.png
+  artifactKey: Guid(11e5ab06858788e4283a67ae91eca8b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_18.png using Guid(11e5ab06858788e4283a67ae91eca8b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc32a7a51e0ad6c8fc2c8f8d2f1a2c71') in 0.003761 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_17.png
+  artifactKey: Guid(c186448c466fad9478c38ce9c2f7b71b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_17.png using Guid(c186448c466fad9478c38ce9c2f7b71b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80a2ad129aafa422c4b6548ee5066748') in 0.004538 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000087 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_24.png
+  artifactKey: Guid(6f6c2d827b5ed454b90a1529cefe9041) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_24.png using Guid(6f6c2d827b5ed454b90a1529cefe9041) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8307f63758c6cc008fba140534344f8') in 0.004742 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000076 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_27.png
+  artifactKey: Guid(7789b657ea330f94d9b70d6d4a117aed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_27.png using Guid(7789b657ea330f94d9b70d6d4a117aed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4993a4223c1ec5483b6665bf9e6c576c') in 0.003921 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_09.png
+  artifactKey: Guid(b26c1b2c24c056a43931e5b20d8d9193) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware/Crosshairs/Art/Textures/Crosshair_09.png using Guid(b26c1b2c24c056a43931e5b20d8d9193) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9522398339adcb327e83b9f013fc2b1f') in 0.004369 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 807.276409 seconds.
+  path: Assets/OccaSoftware
+  artifactKey: Guid(c44a24175fe9c4dd9951a9a15b35a971) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/OccaSoftware using Guid(c44a24175fe9c4dd9951a9a15b35a971) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b7b68ca6611c9b118eb66a558f57a3f') in 0.000884 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 807.100584 seconds.
+  path: Assets/PaintMask.png
+  artifactKey: Guid(548f16289cda548f884ed83dbd852bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PaintMask.png using Guid(548f16289cda548f884ed83dbd852bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b732953a9752dd5e99c785e5a5e1b8ea') in 0.230170 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 652.959710 seconds.
+  path: Assets/PaintMask.png
+  artifactKey: Guid(548f16289cda548f884ed83dbd852bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PaintMask.png using Guid(548f16289cda548f884ed83dbd852bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35d44e7f6d32874e7e9b7f72dd380d5e') in 0.089097 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/StarterAssets/Environment/Art/Skybox/SkyboxLiteWarm.mat
-  artifactKey: Guid(aeab33f69c199e54794f516d31450ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StarterAssets/Environment/Art/Skybox/SkyboxLiteWarm.mat using Guid(aeab33f69c199e54794f516d31450ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b273c0c29616723343c12397bd27ba1') in 0.100478 seconds
+  Time since last request: 20.235059 seconds.
+  path: Assets/PaintSplatShader.shadergraph
+  artifactKey: Guid(8459b86b556d64dd5ae3a2705bb4d229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PaintSplatShader.shadergraph using Guid(8459b86b556d64dd5ae3a2705bb4d229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e72c8d72a244e792ae578ee6411de016') in 0.306956 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 11.798998 seconds.
+  path: Assets/Scenes/Painting.unity
+  artifactKey: Guid(795b18727d238481785e12208f72b09e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Painting.unity using Guid(795b18727d238481785e12208f72b09e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0feada79cd27e21399f1885bbad90a3') in 0.000351 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 937.944998 seconds.
+  path: Assets/Scenes/Level.unity
+  artifactKey: Guid(99c9720ab356a0642a771bea13969a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level.unity using Guid(99c9720ab356a0642a771bea13969a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b43586aa07a12ccc64aa2e86f9099919') in 0.000954 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
