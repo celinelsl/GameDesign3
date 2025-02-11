@@ -195,20 +195,22 @@ namespace StarterAssets
             GroundedCheck();
             Move();
 
-            // Mimic older behavior: use a boolean "pressing" to check if shooting is active.
+            // Using isShooting directly as our "pressing" indicator.
             bool pressing = isShooting;
 
             if (pressing)
             {
                 VisualPolish();
-                RotateParentToCamera();
+                // Optionally, remove or adjust this call if it overrides your x-axis changes:
+                // RotateParentToCamera();
             }
 
-            if (parentController != null && freeLookCamera != null)
+            if (parentController != null)
             {
                 Vector3 angle = parentController.localEulerAngles;
-                // When shooting, remap the camera’s Y-axis value; when not, target x rotation is 0.
-                float targetX = pressing ? RemapCamera(freeLookCamera.m_YAxis.Value, 0, 1, -25, 25) : 0;
+                // Use the updated camera pitch (_cinemachineTargetPitch) instead of freeLookCamera.m_YAxis.Value.
+                float normalizedPitch = Mathf.InverseLerp(BottomClamp, TopClamp, _cinemachineTargetPitch);
+                float targetX = pressing ? RemapCamera(normalizedPitch, 0, 1, -25, 25) : 0;
                 parentController.localEulerAngles = new Vector3(
                     Mathf.LerpAngle(angle.x, targetX, 0.3f),
                     angle.y,
