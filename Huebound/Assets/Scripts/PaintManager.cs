@@ -68,6 +68,9 @@ public class PaintManager : Singleton<PaintManager>{
         extendMaterial.SetFloat(uvOffsetID, paintable.extendsIslandOffset);
         extendMaterial.SetTexture(uvIslandsID, uvIslands);
 
+        Debug.Log("Painting on: " + paintable.name + " at " + pos);
+        Debug.Log("Render Texture: " + mask + " - Format: " + mask.format);
+
         command.SetRenderTarget(mask);
         command.DrawRenderer(rend, paintMaterial, 0);
 

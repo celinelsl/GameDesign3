@@ -25,7 +25,9 @@ public class ParticlesController: MonoBehaviour{
         int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
         Paintable p = other.GetComponent<Paintable>();
-        if(p != null){
+
+        Debug.Log("Painting Object: " + p.name);
+        if (p != null){
             for  (int i = 0; i< numCollisionEvents; i++){
                 Vector3 pos = collisionEvents[i].intersection;
                 float radius = Random.Range(minRadius, maxRadius);

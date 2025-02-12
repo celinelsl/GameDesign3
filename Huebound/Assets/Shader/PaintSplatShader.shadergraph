@@ -6253,7 +6253,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Mask",
     "m_DefaultReferenceName": "_Mask",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_MaskTexture",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",

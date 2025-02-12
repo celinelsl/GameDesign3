@@ -21,7 +21,7 @@ public class Paintable : MonoBehaviour {
     public Renderer getRenderer() => rend;
 
     void Start() {
-        maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0, RenderTextureFormat.ARGB32);
         maskRenderTexture.filterMode = FilterMode.Bilinear;
 
         extendIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
@@ -37,6 +37,7 @@ public class Paintable : MonoBehaviour {
         rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
 
         PaintManager.instance.initTextures(this);
+        Debug.Log("Setting mask texture: " + rend.material.HasProperty("_MaskTexture"));
     }
 
     void OnDisable(){
